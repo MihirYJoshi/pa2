@@ -1,14 +1,28 @@
-
+/**
+ * This file has the class of arraylist
+ */
+/**
+ * This is my class ArrayList that implelets my list. It is used to
+ * create an arraylist
+ */
 public class MyArrayList<E> implements MyList<E>{
 
     Object[] data;
     int size;
 
+    /**
+     * THis is the default constritor
+     */
     public MyArrayList(){
         this.data = new Object[5];
         this.size = 0;
     }
 
+    /**
+     * This is the constructor with an initial capactiy
+     * @param initialCapacity
+     * @throws IllegalArgumentException
+     */
     public MyArrayList(int initialCapacity) throws IllegalArgumentException{
         if(initialCapacity < 0){
             throw new IllegalArgumentException();
@@ -17,6 +31,10 @@ public class MyArrayList<E> implements MyList<E>{
         this.size = 0;
     }
 
+    /**
+     * Constructor with an array
+     * @param arr
+     */
     public MyArrayList (E[] arr){
         if(arr == null){
             this.data = new Object[5];
@@ -143,7 +161,8 @@ public class MyArrayList<E> implements MyList<E>{
     }
 
     /**
-     * Replaces an element at the specified index with a new element and return
+     * Replaces an element at the specified index with a new 
+     * element and return
      * the original element
      *
      * @param index   the index at which to replace
@@ -160,7 +179,8 @@ public class MyArrayList<E> implements MyList<E>{
     }
 
     /**
-     * Remove the element at the specified index and return the removed element
+     * Remove the element at the specified index and return
+     * the removed element
      *
      * @param index the index at which to remove the element
      * @return the removed element
