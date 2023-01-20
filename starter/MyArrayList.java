@@ -135,7 +135,13 @@ public class MyArrayList<E> implements MyList<E>{
      * @param element the element to append
      */
     public void append(E element){
-        this.insert(this.size-1, (E) element);
+        if(this.data.length == 0){
+            this.data = new Object[5];
+            this.data[0] = (E) element;
+            size += 1;
+        }else{
+            this.insert(this.size-1, (E) element);
+        }
     }
 
     /**
