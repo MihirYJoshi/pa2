@@ -150,7 +150,13 @@ public class MyArrayList<E> implements MyList<E>{
      * @param element the element to prepend
      */
     public void prepend(E element){
-        this.insert(0, (E) element);
+        if(this.data.length == 0){
+            this.data = new Object[5];
+            this.data[0] = (E) element;
+            size += 1;
+        }else{
+            this.insert(0, (E) element);
+        }
     }
 
     /**
