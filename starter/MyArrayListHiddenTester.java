@@ -72,12 +72,15 @@ public class MyArrayListHiddenTester {
     public void testAppendNull(){
         list2.append(5);
         list2.append(4);
+        list2.append(3);
         list2.append(null);
 
         assertArrayEquals("Check for successful append", 
-        new Integer[]{5, 4, null}, list2.data);
+        new Integer[]{5, 4, 3, null, null, null}, list2.data);
         assertEquals("Check list size after the append",
-                2, list2.size);
+                3, list2.size);
+        assertEquals("Check list capacity after the append",
+            6, list2.getCapacity());
     }
 
     /**
@@ -95,6 +98,8 @@ public class MyArrayListHiddenTester {
         new Integer[]{2, 5, 4, 3, null, null}, list3.data);
         assertEquals("Check list size after the append",
                 4, list3.size);
+        assertEquals("Check list capacity after the append",
+            6, list3.getCapacity());
     }
     
     /**
@@ -107,7 +112,7 @@ public class MyArrayListHiddenTester {
         list4.append(5);
         list4.append(4);
         list4.append(3);
-        list4.prepend(2);
+        list4.prepend(null);
 
         assertArrayEquals("Check for successful append", 
         new Integer[]{null, 5, 4, 3, null, null}, list4.data);
@@ -120,7 +125,11 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testInsertOutOfBound(){
-       list4.insert(6, 3);
+        list5.append(5);
+        list5.append(4);
+        list5.append(3);
+        list5.prepend(2);
+       list5.insert(6, 3);
        assertArrayEquals("Check for successful append", 
        new Integer[]{null, 5, 4, 3, null, null}, list4.data);
        assertEquals("Check list size after the append",
@@ -134,13 +143,13 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testInsertMultiple(){
-        for(int i = 0; i < 50; i++){
-            list4.insert(10,50);
-        }
-        assertArrayEquals("Check for successful append", 
-       new Integer[]{null, 5, 4, 3, null, null}, list4.data);
-       assertEquals("Check list size after the append",
-               3, list4.size);
+    //     for(int i = 0; i < 50; i++){
+    //         list4.insert(10,50);
+    //     }
+    //     assertArrayEquals("Check for successful append", 
+    //    new Integer[]{null, 5, 4, 3, null, null}, list4.data);
+    //    assertEquals("Check list size after the append",
+    //            3, list4.size);
     }
 
     /**

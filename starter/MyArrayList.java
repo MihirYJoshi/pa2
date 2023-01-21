@@ -107,26 +107,31 @@ public class MyArrayList<E> implements MyList<E>{
         }else if(this.data.length == 0){
             this.data = new Object[5];
             this.data[0] = (E) element;
-            size += 1;
+            if(element != null){
+                this.size += 1;
+            }
             return;
         }else if(this.data.length == this.size){
             this.expandCapacity(this.data.length + 3);
         }
         if(index == this.size){
             this.data[index] = (E) element;
-            this.size += 1;
+            if(element != null){
+                this.size += 1;
+            }
         }else{
             Object[] copy = new Object[this.data.length];
             for(int i = 0; i < (this.data.length); i ++){
                 copy[i] = (E) this.data[i];
             }
             this.data[index] = (E) element;
-            for(int i = index+1; i < copy.length+1; i++){
+            for(int i = index+1; i < copy.length; i++){
                 this.data[i] = (E) copy[i-1];
             }
-            this.size += 1;
+            if(element != null){
+                this.size += 1;
+            }
         }
-
     }
 
     /**
@@ -138,9 +143,16 @@ public class MyArrayList<E> implements MyList<E>{
         if(this.data.length == 0){
             this.data = new Object[5];
             this.data[0] = (E) element;
-            size += 1;
+            if(element != null){
+                this.size += 1;
+            }
+        }else if(this.size == 0){
+            this.data[0] = (E) element;
+            if(element != null){
+                this.size += 1;
+            }
         }else{
-            this.insert(this.size-1, (E) element);
+            this.insert(this.size, (E) element);
         }
     }
 
@@ -153,7 +165,14 @@ public class MyArrayList<E> implements MyList<E>{
         if(this.data.length == 0){
             this.data = new Object[5];
             this.data[0] = (E) element;
-            size += 1;
+            if(element != null){
+                this.size += 1;
+            }
+        }else if(this.size == 0){
+            this.data[0] = (E) element;
+            if(element != null){
+                this.size += 1;
+            }
         }else{
             this.insert(0, (E) element);
         }
@@ -202,9 +221,11 @@ public class MyArrayList<E> implements MyList<E>{
             throw new IndexOutOfBoundsException();
         }
         E stored = (E) this.data[index];
-        for(int i = index; i <= this.data.length; i ++){
-            this.data[index] = this.data[index+1];
+
+        for(int i = index; i < this.data.length-1; i ++){
+            this.data[i] = (E) this.data[i+1];
         }
+        this.data[this.data.length-1] = null;
         size -= 1;
         return stored;
     }
