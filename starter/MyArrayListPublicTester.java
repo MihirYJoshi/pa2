@@ -34,7 +34,7 @@ public class MyArrayListPublicTester {
     @Before
     public void setUp() throws Exception {
         listEmpty = new MyArrayList();
-        listNonEmpty = new MyArrayList<>(arrNonEmptyInts);
+        listNonEmpty = new MyArrayList<Integer>(arrNonEmptyInts);
         listNonEmpty.size = 1;
         listDefaultCap = new MyArrayList(DEFAULT_CAPACITY);
         listCustomCapacity = new MyArrayList(MY_CAPACITY);

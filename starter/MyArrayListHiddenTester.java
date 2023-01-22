@@ -96,9 +96,9 @@ public class MyArrayListHiddenTester {
         list2.append(null);
 
         assertArrayEquals("Check for successful append", 
-        new Integer[]{5, 4, 3}, list2.data);
+        new Integer[]{5, 4, 3, null, null, null}, list2.data);
         assertEquals("Check list size after the append",
-                3, list2.size);
+                4, list2.size);
     }
 
     /**
