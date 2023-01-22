@@ -60,6 +60,8 @@ public class MyArrayList<E> implements MyList<E>{
             }else{
                 this.data = new Object[5];
             }
+        }else if(requiredCapacity < this.data.length){
+            throw new IllegalArgumentException();
         }else if(this.data.length + 3 < requiredCapacity){
             Object[] copy = new Object[this.data.length];
             for(int i = 0; i < (this.data.length); i ++){
@@ -107,18 +109,14 @@ public class MyArrayList<E> implements MyList<E>{
         }else if(this.data.length == 0){
             this.data = new Object[5];
             this.data[0] = (E) element;
-            if(element != null){
-                this.size += 1;
-            }
+            this.size += 1;
             return;
         }else if(this.data.length == this.size){
             this.expandCapacity(this.data.length + 3);
         }
         if(index == this.size){
             this.data[index] = (E) element;
-            if(element != null){
-                this.size += 1;
-            }
+            this.size += 1;
         }else{
             Object[] copy = new Object[this.data.length];
             for(int i = 0; i < (this.data.length); i ++){
@@ -128,9 +126,7 @@ public class MyArrayList<E> implements MyList<E>{
             for(int i = index+1; i < copy.length; i++){
                 this.data[i] = (E) copy[i-1];
             }
-            if(element != null){
-                this.size += 1;
-            }
+            this.size += 1;
         }
     }
 
@@ -143,14 +139,10 @@ public class MyArrayList<E> implements MyList<E>{
         if(this.data.length == 0){
             this.data = new Object[5];
             this.data[0] = (E) element;
-            if(element != null){
-                this.size += 1;
-            }
+            this.size += 1;
         }else if(this.size == 0){
             this.data[0] = (E) element;
-            if(element != null){
-                this.size += 1;
-            }
+            this.size += 1;
         }else{
             this.insert(this.size, (E) element);
         }
@@ -165,14 +157,10 @@ public class MyArrayList<E> implements MyList<E>{
         if(this.data.length == 0){
             this.data = new Object[5];
             this.data[0] = (E) element;
-            if(element != null){
-                this.size += 1;
-            }
+            this.size += 1;
         }else if(this.size == 0){
             this.data[0] = (E) element;
-            if(element != null){
-                this.size += 1;
-            }
+            this.size += 1;
         }else{
             this.insert(0, (E) element);
         }

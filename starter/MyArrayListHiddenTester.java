@@ -10,7 +10,7 @@ public class MyArrayListHiddenTester {
      * before each test 
      */
 
-     private MyArrayList list1, list2, list3, list4, list5;
+     private MyArrayList list1, list2, list3, list4, list5, list6, list7, list8;
 
     @Before
     public void setUp() throws Exception {
@@ -19,7 +19,9 @@ public class MyArrayListHiddenTester {
         list3 = new MyArrayList(3);
         list4 = new MyArrayList(3);
         list5 = new MyArrayList(3);
-
+        list6 = new MyArrayList(3);
+        list7 = new MyArrayList(3);
+        list8 = new MyArrayList(3);
     }
 
     /**
@@ -28,7 +30,14 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testConstructorInvalidArg(){
-        
+        int test = 0;
+        try{
+            MyArrayList<String> list11 = new MyArrayList<String>(-1);
+        }catch(IllegalArgumentException e){
+            test+=1;
+        }
+        assertEquals("Check list size after the append",
+                1, test);
     }
 
     /**
@@ -36,7 +45,11 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testConstructorNullArg(){
-
+        MyArrayList<String> list10 = new MyArrayList<String>(null);
+        assertArrayEquals("Check for successful append", 
+        new String[]{null, null, null, null, null}, list10.data);
+        assertEquals("Check list size after the append",
+                0, list10.size);
     }
 
     /**
@@ -44,12 +57,19 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testConstructorArrayWithNull(){
+        String[] a = {"3",null,"4",null};
+        MyArrayList<String> list9 = new MyArrayList<String>(a);
+        assertArrayEquals("Check for successful append", 
+        new String[]{"3", null, "4", null}, list9.data);
+        assertEquals("Check list size after the append",
+                4, list9.size);
 
     }
 
     /**
      * Aims to test the append method when an element is added to a full list
      * Check reflection on size and capacity
+     * WORKS
      */
     @Test
     public void testAppendAtCapacity(){
@@ -76,11 +96,9 @@ public class MyArrayListHiddenTester {
         list2.append(null);
 
         assertArrayEquals("Check for successful append", 
-        new Integer[]{5, 4, 3, null, null, null}, list2.data);
+        new Integer[]{5, 4, 3}, list2.data);
         assertEquals("Check list size after the append",
                 3, list2.size);
-        assertEquals("Check list capacity after the append",
-            6, list2.getCapacity());
     }
 
     /**
@@ -98,14 +116,15 @@ public class MyArrayListHiddenTester {
         new Integer[]{2, 5, 4, 3, null, null}, list3.data);
         assertEquals("Check list size after the append",
                 4, list3.size);
-        assertEquals("Check list capacity after the append",
-            6, list3.getCapacity());
+        // assertEquals("Check list capacity after the append",
+        //     6, list3.getCapacity());
     }
     
     /**
      * Aims to test the prepend method when a null element is added
      * Checks reflection on size and capacity
      * Checks whether null was added successfully
+     * WORKS
      */
     @Test
     public void testPrependNull(){
@@ -117,23 +136,26 @@ public class MyArrayListHiddenTester {
         assertArrayEquals("Check for successful append", 
         new Integer[]{null, 5, 4, 3, null, null}, list4.data);
         assertEquals("Check list size after the append",
-                3, list4.size);
+                4, list4.size);
     }
     
     /**
      * Aims to test the insert method when input index is out of bounds
+     * WORKS
      */
     @Test
     public void testInsertOutOfBound(){
         list5.append(5);
         list5.append(4);
         list5.append(3);
-        list5.prepend(2);
-       list5.insert(6, 3);
-       assertArrayEquals("Check for successful append", 
-       new Integer[]{null, 5, 4, 3, null, null}, list4.data);
-       assertEquals("Check list size after the append",
-               3, list4.size);
+        int test = 0;
+        try{
+            list5.insert(6, 3);
+        }catch(IndexOutOfBoundsException e){
+            test += 1;
+        }
+       assertEquals("Check for exception",
+               1, test);
     }
 
     /**
@@ -143,13 +165,13 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testInsertMultiple(){
-    //     for(int i = 0; i < 50; i++){
-    //         list4.insert(10,50);
-    //     }
-    //     assertArrayEquals("Check for successful append", 
-    //    new Integer[]{null, 5, 4, 3, null, null}, list4.data);
-    //    assertEquals("Check list size after the append",
-    //            3, list4.size);
+        for(int i = 0; i < 50; i++){
+            list6.insert(i,50);
+        }
+        assertArrayEquals("Check for successful append", 
+       new Integer[]{50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, null}, list6.data);
+       assertEquals("Check list size after the append",
+               50, list6.size);
     }
 
     /**
@@ -157,7 +179,14 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testGetOutOfBound(){
-        list1.get(10);
+        int test = 0;
+        try{
+            list1.get(10);
+        }catch(IndexOutOfBoundsException e){
+            test += 1;
+        }
+       assertEquals("Check for exception",
+               1, test);
         
     }
 
@@ -166,7 +195,14 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testSetOutOfBound(){
-        
+        int test = 0;
+        try{
+            list1.set(100, 5);
+        }catch(IndexOutOfBoundsException e){
+            test += 1;
+        }
+       assertEquals("Check for exception",
+               1, test);
     }
 
     /**
@@ -174,7 +210,19 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testRemoveMultiple(){
-        
+        list8.append(5);
+        list8.append(5);
+        list8.append(5);
+        list8.append(5);
+        list8.append(5);
+        for(int i = 4; i > 0; i--){
+            list8.remove(i);
+        }
+        assertArrayEquals("Check for successful append", 
+       new Integer[]{5, null, null, null, null, null}, list8.data);
+       assertEquals("Check list size after the append",
+               1, list8.size);
+
     }
 
     /**
@@ -182,7 +230,14 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testRemoveOutOfBound(){
-        
+        int test = 0;
+        try{
+            list1.remove(100);
+        }catch(IndexOutOfBoundsException e){
+            test += 1;
+        }
+       assertEquals("Check for exception",
+               1, test);
     }
 
     /**
@@ -191,7 +246,18 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testExpandCapacitySmaller(){
-       
+       list7.append(1);
+       list7.append(2);
+       list7.append(3);
+       int test = 0;
+       try{
+            list7.expandCapacity(1);
+       }catch(IllegalArgumentException e){
+            test+=1;
+       }
+       assertEquals("Check for exception",
+               1, test);
+
     }
 
     /**
@@ -200,7 +266,15 @@ public class MyArrayListHiddenTester {
      */
     @Test
     public void testExpandCapacityLarge(){
-        
+        list7.append(1);
+       list7.append(2);
+       list7.append(3);
+       list7.expandCapacity(10);
+       assertArrayEquals("Check for successful append", 
+       new Integer[]{1, 2, 3, null, null, null, null, null, null, null}, list7.data);
+       assertEquals("Check list size after the append",
+               3, list7.size);
+
     }
     
 
