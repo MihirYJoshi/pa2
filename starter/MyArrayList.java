@@ -1,9 +1,13 @@
-/**
- * This file has the class of arraylist
+/*
+ * Name: Mihir Joshi
+ * Email: myjoshi@ucsd.edu
+ * PID: A17275299
+ * This file is used for the My Arraylist class. It
+ * is used to create my own arraylist
  */
 /**
- * This is my class ArrayList that implelets my list. It is used to
- * create an arraylist
+ * THis implements a MyList for the array
+ * It is for the list
  */
 public class MyArrayList<E> implements MyList<E>{
 
@@ -16,6 +20,7 @@ public class MyArrayList<E> implements MyList<E>{
     public MyArrayList(){
         this.data = new Object[5];
         this.size = 0;
+        //Normal constructor
     }
 
     /**
@@ -23,9 +28,11 @@ public class MyArrayList<E> implements MyList<E>{
      * @param initialCapacity
      * @throws IllegalArgumentException
      */
-    public MyArrayList(int initialCapacity) throws IllegalArgumentException{
+    public MyArrayList(int initialCapacity) throws IllegalArgumentException
+    {
         if(initialCapacity < 0){
             throw new IllegalArgumentException();
+            //throws exception
         }
         this.data = new Object[initialCapacity];
         this.size = 0;
@@ -38,9 +45,11 @@ public class MyArrayList<E> implements MyList<E>{
     public MyArrayList (E[] arr){
         if(arr == null){
             this.data = new Object[5];
+            //Checks for array null
             this.size = 0;
         }else{
             this.data = new Object[arr.length];
+            //appends
             this.size = arr.length;
             for(int i = 0; i < this.data.length; i++){
                 this.data[i] = (E) arr[i];
@@ -62,6 +71,7 @@ public class MyArrayList<E> implements MyList<E>{
             }
         }else if(requiredCapacity < this.data.length){
             throw new IllegalArgumentException();
+            //throws exception
         }else if(this.data.length + 3 < requiredCapacity){
             Object[] copy = new Object[this.data.length];
             for(int i = 0; i < (this.data.length); i ++){
@@ -95,6 +105,7 @@ public class MyArrayList<E> implements MyList<E>{
      */
     public int getCapacity(){
         return this.data.length;
+        //Return capacity
     }
 
     /**
@@ -106,6 +117,7 @@ public class MyArrayList<E> implements MyList<E>{
     public void insert(int index, E element){
         if(index < 0 || index > this.size){
             throw new IndexOutOfBoundsException();
+            //throws exception
         }else if(this.data.length == 0){
             this.data = new Object[5];
             this.data[0] = (E) element;
@@ -113,6 +125,7 @@ public class MyArrayList<E> implements MyList<E>{
             return;
         }else if(this.data.length == this.size){
             this.expandCapacity(this.data.length + 3);
+            //Increase the size
         }
         if(index == this.size){
             this.data[index] = (E) element;
@@ -145,6 +158,7 @@ public class MyArrayList<E> implements MyList<E>{
             this.size += 1;
         }else{
             this.insert(this.size, (E) element);
+            //Calls insert to put at back
         }
     }
 
@@ -163,6 +177,7 @@ public class MyArrayList<E> implements MyList<E>{
             this.size += 1;
         }else{
             this.insert(0, (E) element);
+            //Calls insert to move stuff
         }
     }
 
@@ -175,6 +190,7 @@ public class MyArrayList<E> implements MyList<E>{
     public E get(int index){
         if(index < 0 || index >= this.size){
             throw new IndexOutOfBoundsException();
+            //throws exception
         }
         return (E) this.data[index];
     }
@@ -191,6 +207,7 @@ public class MyArrayList<E> implements MyList<E>{
     public E set(int index, E element){
         if(index < 0 || index >= this.size){
             throw new IndexOutOfBoundsException();
+            //throws exception
         }
         E stored = (E) this.data[index];
         this.data[index] = element;
@@ -207,11 +224,13 @@ public class MyArrayList<E> implements MyList<E>{
     public E remove(int index){
         if(index < 0 || index >= this.size){
             throw new IndexOutOfBoundsException();
+            //throws exception
         }
         E stored = (E) this.data[index];
 
         for(int i = index; i < this.data.length-1; i ++){
             this.data[i] = (E) this.data[i+1];
+            //moves forward
         }
         this.data[this.data.length-1] = null;
         size -= 1;
@@ -224,6 +243,7 @@ public class MyArrayList<E> implements MyList<E>{
      * @return number of elements in the list
      */
     public int size(){
+        //returns size
         return this.size;
     }
 

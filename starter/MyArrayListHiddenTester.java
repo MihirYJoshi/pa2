@@ -1,7 +1,14 @@
+/*
+ * THis is the file tester for hidden files. This is
+ * a way to check if the myarraylist works
+ */
 import static org.junit.Assert.*;
-
 import org.junit.*;
 
+/**
+ * This is the class to test the my arraylist
+ * This is for debugging
+ */
 public class MyArrayListHiddenTester {
     // Do not change the method signatures!
     /**
@@ -12,6 +19,10 @@ public class MyArrayListHiddenTester {
 
      private MyArrayList list1, list2, list3, list4, list5, list6, list7, list8;
 
+     /**
+      * THis runds first to setup all the tests
+      * @throws Exception
+      */
     @Before
     public void setUp() throws Exception {
         list1 = new MyArrayList(3);
@@ -38,6 +49,7 @@ public class MyArrayListHiddenTester {
         }
         assertEquals("Check list size after the append",
                 1, test);
+                //This is for checking
     }
 
     /**
@@ -50,6 +62,7 @@ public class MyArrayListHiddenTester {
         new String[]{null, null, null, null, null}, list10.data);
         assertEquals("Check list size after the append",
                 0, list10.size);
+                //This is for checking
     }
 
     /**
@@ -63,6 +76,7 @@ public class MyArrayListHiddenTester {
         new String[]{"3", null, "4", null}, list9.data);
         assertEquals("Check list size after the append",
                 4, list9.size);
+                //This is for checking
 
     }
 
@@ -82,6 +96,7 @@ public class MyArrayListHiddenTester {
         new Integer[]{5, 4, 3, 2, null, null}, list1.data);
         assertEquals("Check list size after the append",
                 4, list1.size);
+                //This is for checking
     }
 
     /**
@@ -99,6 +114,7 @@ public class MyArrayListHiddenTester {
         new Integer[]{5, 4, 3, null, null, null}, list2.data);
         assertEquals("Check list size after the append",
                 4, list2.size);
+                //This is for checking
     }
 
     /**
@@ -137,6 +153,7 @@ public class MyArrayListHiddenTester {
         new Integer[]{null, 5, 4, 3, null, null}, list4.data);
         assertEquals("Check list size after the append",
                 4, list4.size);
+                //This is for checking
     }
     
     /**
@@ -156,6 +173,7 @@ public class MyArrayListHiddenTester {
         }
        assertEquals("Check for exception",
                1, test);
+               //This is for checking
     }
 
     /**
@@ -168,10 +186,12 @@ public class MyArrayListHiddenTester {
         for(int i = 0; i < 50; i++){
             list6.insert(i,50);
         }
+        //This is for checking
         assertArrayEquals("Check for successful append", 
        new Integer[]{50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, null}, list6.data);
        assertEquals("Check list size after the append",
                50, list6.size);
+               //This is for checking
     }
 
     /**
@@ -187,6 +207,7 @@ public class MyArrayListHiddenTester {
         }
        assertEquals("Check for exception",
                1, test);
+               //This is for checking
         
     }
 
@@ -203,6 +224,7 @@ public class MyArrayListHiddenTester {
         }
        assertEquals("Check for exception",
                1, test);
+               //This is for checking
     }
 
     /**
@@ -222,6 +244,7 @@ public class MyArrayListHiddenTester {
        new Integer[]{5, null, null, null, null, null}, list8.data);
        assertEquals("Check list size after the append",
                1, list8.size);
+               //This is for checking
 
     }
 
@@ -238,6 +261,7 @@ public class MyArrayListHiddenTester {
         }
        assertEquals("Check for exception",
                1, test);
+               //This is for checking
     }
 
     /**
@@ -257,6 +281,7 @@ public class MyArrayListHiddenTester {
        }
        assertEquals("Check for exception",
                1, test);
+               //This is for checking
 
     }
 
@@ -274,8 +299,7 @@ public class MyArrayListHiddenTester {
        new Integer[]{1, 2, 3, null, null, null, null, null, null, null}, list7.data);
        assertEquals("Check list size after the append",
                3, list7.size);
+               //This is for checking
 
     }
-    
-
 }
